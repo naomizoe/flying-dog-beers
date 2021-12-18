@@ -14,11 +14,11 @@ color1='darkred'
 color2='orange'
 mytitle='Beer Comparison'
 tabtitle='Common sense challenge!'
-myheading='Common sense challenge'
-myheading2='This figure shows the interaction between hyperparamters and the accuracy that was achieved'
+myheading='Common sense challenge - Group 32'
+myheading2='This figure shows the interaction between hyperparameters and the accuracy that was achieved'
 label1='IBU'
 label2='ABV'
-githublink='https://github.com/austinlasseter/flying-dog-beers'
+githublink='https://github.com/naomioe/flying-dog-beers'
 
 ########### Set up the chart
 #bitterness = go.Bar(
