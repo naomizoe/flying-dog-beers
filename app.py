@@ -15,10 +15,10 @@ color2='orange'
 mytitle='Beer Comparison'
 tabtitle='Common sense challenge!'
 myheading='Common sense challenge'
+myheading2='This figure shows the interaction between hyperparamters and the accuracy that was achieved'
 label1='IBU'
 label2='ABV'
 githublink='https://github.com/austinlasseter/flying-dog-beers'
-sourceurl='https://www.flyingdog.com/beers/'
 
 ########### Set up the chart
 #bitterness = go.Bar(
@@ -68,13 +68,13 @@ app.title=tabtitle
 ########### Set up the layout
 app.layout = html.Div(children=[
     html.H1(myheading),
+    html.H2(myheading1),
     dcc.Graph(
         id='flyingdog',
         figure=beer_fig
     ),
     html.A('Code on Github', href=githublink),
     html.Br(),
-    html.A('Data Source', href=sourceurl),
     ]
 )
 
