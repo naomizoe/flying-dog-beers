@@ -33,23 +33,13 @@ fig.update_layout(
     title ="This figure shows the interaction between hyperparameters and the accuracy that was achieved."
 )
 
-fig.show()
-
 ########### Initiate the app
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-server = app.server
-app.title=tabtitle
+app = dash.Dash()
 
 ########### Set up the layout
-app.layout = html.Div(children=[
-    html.H1(myheading),
-    dcc.Graph(figure=fig),
-   # html.A('Code on Github', href=githublink),
-    #html.Br(),
-    #html.A('Data Source', href=sourceurl),
-    ]
-)
+app.layout = html.Div([
+    dcc.Graph(figure=fig)
+])
 
 if __name__ == '__main__':
     app.run_server()
