@@ -2,43 +2,38 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 import plotly.graph_objs as go
+import plotly.express as px
+import pandas as pd
 
-########### Define your variables
-beers=['Chesapeake Stout', 'Snake Dog IPA', 'Imperial Porter', 'Double Dog IPA']
-ibu_values=[35, 60, 85, 75]
-abv_values=[5.4, 7.1, 9.2, 4.3]
-color1='darkred'
-color2='orange'
-mytitle='Beer Comparison'
-tabtitle='beer!'
-myheading='Flying Dog Beers'
-label1='IBU'
-label2='ABV'
-githublink='https://github.com/austinlasseter/flying-dog-beers'
-sourceurl='https://www.flyingdog.com/beers/'
+########### Define your data
+df = pd.read_csv("parameters_v2.csv", delimiter = ';')'
 
-########### Set up the chart
-bitterness = go.Bar(
-    x=beers,
-    y=ibu_values,
-    name=label1,
-    marker={'color':color1}
-)
-alcohol = go.Bar(
-    x=beers,
-    y=abv_values,
-    name=label2,
-    marker={'color':color2}
+########### Set up the figure
+fig = go.Figure(data=
+    go.Parcoords(
+        line = dict(color = df['accuracy'],
+                   colorscale = [[0,'purple'],[0.5,'lightseagreen'],[1,'gold']]),
+        dimensions = list([
+            dict(range = [0,5],
+                label = 'Epoch', values = df['epoch']),
+            dict(range = [0,0.0005],
+                label = 'Learning rate', values = df['Lr']),
+            dict(range = [0,18],
+                label = 'Batch size', values = df['batch size']),
+            dict(range = [0,100],
+                label = 'Accuracy', values = df['accuracy'])
+        ]),
+    ),
+            
 )
 
-beer_data = [bitterness, alcohol]
-beer_layout = go.Layout(
-    barmode='group',
-    title = mytitle
+fig.update_layout(
+    plot_bgcolor = 'white',
+    paper_bgcolor = 'white',
+    title ="This figure shows the interaction between hyperparameters and the accuracy that was achieved."
 )
 
-beer_fig = go.Figure(data=beer_data, layout=beer_layout)
-
+fig.show()
 
 ########### Initiate the app
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -49,13 +44,10 @@ app.title=tabtitle
 ########### Set up the layout
 app.layout = html.Div(children=[
     html.H1(myheading),
-    dcc.Graph(
-        id='flyingdog',
-        figure=beer_fig
-    ),
-    html.A('Code on Github', href=githublink),
-    html.Br(),
-    html.A('Data Source', href=sourceurl),
+    dcc.Graph(figure=fig),
+   # html.A('Code on Github', href=githublink),
+    #html.Br(),
+    #html.A('Data Source', href=sourceurl),
     ]
 )
 
