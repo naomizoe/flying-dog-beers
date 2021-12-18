@@ -18,26 +18,42 @@ githublink='https://github.com/austinlasseter/flying-dog-beers'
 sourceurl='https://www.flyingdog.com/beers/'
 
 ########### Set up the chart
-bitterness = go.Bar(
-    x=beers,
-    y=ibu_values,
-    name=label1,
-    marker={'color':color1}
-)
-alcohol = go.Bar(
-    x=beers,
-    y=abv_values,
-    name=label2,
-    marker={'color':color2}
-)
+#bitterness = go.Bar(
+ #   x=beers,
+ #   y=ibu_values,
+ #   name=label1,
+ #   marker={'color':color1}
+#)
+#alcohol = go.Bar(
+#    x=beers,
+ #   y=abv_values,
+ #   name=label2,
+ #   marker={'color':color2}
+#)
 
-beer_data = [bitterness, alcohol]
-beer_layout = go.Layout(
-    barmode='group',
-    title = mytitle
-)
+#beer_data = [bitterness, alcohol]
+#beer_layout = go.Layout(
+ #   barmode='group',
+ #   title = mytitle
+#)
 
-beer_fig = go.Figure(data=beer_data, layout=beer_layout)
+beer_fig = go.Figure(data=
+    go.Parcoords(
+        line = dict(color = df['accuracy'],
+                   colorscale = [[0,'purple'],[0.5,'lightseagreen'],[1,'gold']]),
+        dimensions = list([
+            dict(range = [0,5],
+                label = 'Epoch', values = df['epoch']),
+            dict(range = [0,0.0005],
+                label = 'Learning rate', values = df['Lr']),
+            dict(range = [0,18],
+                label = 'Batch size', values = df['batch size']),
+            dict(range = [0,100],
+                label = 'Accuracy', values = df['accuracy'])
+        ]),
+    ),
+            
+)
 
 
 ########### Initiate the app
