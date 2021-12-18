@@ -68,7 +68,7 @@ app.title=tabtitle
 ########### Set up the layout
 app.layout = html.Div(children=[
     html.H1(myheading),
-    html.H2(myheading1),
+    html.H2(myheading2),
     dcc.Graph(
         id='flyingdog',
         figure=beer_fig
