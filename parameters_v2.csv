@@ -1,0 +1,15 @@
+﻿Model;epoch;Lr;eps;train/test/split;dropout rate;training loss;batch size;accuracy;score;optimizer;weight decay
+Roberta Large;2;0.00005;1.e.-8;85;0.1;0.64;8;67;;adam/linear;0
+Roberta Large;2;0.00002;10.e.-4;85;0.1;;16;86;89;adam/linear;0
+Roberta Large;2;0.00002;1.e.-8;90;0.1;0.64;16;67;;adam/linear;0
+Roberta Large;2;0.00002;10.e.-4;90;0.1;0.39;16;83;;adam/linear;0
+Roberta Large;2;0.0001;10.e.-4;90;0.1;0.29;16;88;;adam/linear;0
+Roberta Large;2;0.0001;10.e.-4;90;0.5;0.73;16;34;;adam/linear;0
+Roberta Large;2;0.0001;10.e.-4;90;0.05;0.31;16;88;;adam/linear;0
+Roberta Large;3;0.000022;10.e.-4;90;0.1;0.35;16;85;;adam/linear;0.001
+Roberta Large;3;0.0002;10.e.-4;90;0.15;0.26;16;89;91,15;adam/cosine;0.001
+Roberta Large;4;0.0003;10.e.-4;90;0.15;0.2;16;89;90,045;adam/cosine;0.001
+Roberta Large;2;0.00002;1.e.-8;90;0.1;0.35;16;88;90;adam/cosine;0.01
+Roberta Large;2;0.00002;1.e.-8;90;0.1;0.24;17;90;92.4;adam/linear;0
+Roberta Large;2;0.00002;1.e.-8;90;0.1;0.23;17;90;92.7;adam/linear;0.01
+Roberta Large;2;0.00002;5.e.-7;90;0.1;0.25;17;87;91.45;adam/linear;0.01
